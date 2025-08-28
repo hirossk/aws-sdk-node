@@ -1,5 +1,6 @@
 import express from 'express';
 import multer from 'multer';
+// DetectLabelsCommandをDetectFacesCommandに変更する場合は、下のimportを修正
 import { RekognitionClient, DetectLabelsCommand } from "@aws-sdk/client-rekognition";
 
 const app = express();
@@ -19,6 +20,8 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 
   try {
+    // DetectLabelsCommandをDetectFacesCommandに変更する場合は、ここを修正
+    // DetectFacesCommandの場合は、MaxLabelsやMinConfidenceは不要
     const command = new DetectLabelsCommand({
       Image: {
         Bytes: req.file.buffer, // アップロードされたファイルをバイナリデータとして使用
@@ -27,8 +30,9 @@ app.post('/upload', upload.single('image'), async (req, res) => {
       MinConfidence: 70,
     });
 
+    // DetectFacesCommandの場合は、response.FaceDetailsなどに変更
     const response = await client.send(command);
-    res.json(response.Labels); // ラベル情報をJSONで返す
+    res.json(response.Labels); // DetectFacesCommandの場合はresponse.FaceDetailsを返す
 
   } catch (error) {
     console.error("Rekognitionエラー:", error);
