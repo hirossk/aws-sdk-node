@@ -1,0 +1,20 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.env
+.env.local
+.env.*.local
+coverage/
+*.tgz
+.DS_Store
+*.pem
+*.key
+*.crt
+.tool-version
+
+# Optional: VSCode settings
+.vscode/
