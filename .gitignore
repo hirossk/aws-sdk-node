@@ -14,7 +14,7 @@ coverage/
 *.pem
 *.key
 *.crt
-.tool-version
+.tool-versions
 
 # Optional: VSCode settings
 .vscode/
